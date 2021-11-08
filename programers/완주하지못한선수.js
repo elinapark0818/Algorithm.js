@@ -24,3 +24,46 @@ const stringArr = ['alice', 'zflip', 'frank', 'cylon']
 stringArr.sort();
 console.log(stringArr); // ['alice', 'cylon', 'frank', 'zflip']
 
+
+// object 로 풀기
+function solution(participant, completion) {
+    const obj = {}
+    for (let p of participant) {
+        obj[p] = obj[p] ? obj[p] + 1 : 1;
+    }
+    for (let c of completion) {
+        obj[c] -= 1;
+    }
+    for (let key in obj) {
+        if (obj[key] == 1) {
+            return key;
+        }
+    }
+}
+
+
+// fine 와 map 로 풀기
+let solution = (participant, completion) => 
+    participant.find(name => !completion[name]--, 
+        completion.map(name => completion[name] = (completion[name]|0) + 1))
+
+
+
+// map, set, get 으로 풀기
+function solution(participant, completion) {
+    const map = new Map();
+
+    for(let i = 0; i < participant.length; i++) {
+        let a = participant[i], 
+            b = completion[i];
+
+        map.set(a, (map.get(a) || 0) + 1);
+        map.set(b, (map.get(b) || 0) - 1);
+    }
+
+    for(let [k, v] of map) {
+        if(v > 0) return k;
+    }
+
+    return 'nothing';
+}
