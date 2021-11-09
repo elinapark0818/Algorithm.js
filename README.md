@@ -8,4 +8,11 @@
 3. 화이팅!!!
 
 ---
-TIL
+
+## github push error
+
+    git config --global unset elinapark0818
+    git config --global unset elinapark0818@gmail.com
+    git config --global unset credential.helper
+    
+    computer logout & login
