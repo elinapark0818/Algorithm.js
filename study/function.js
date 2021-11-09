@@ -6,6 +6,7 @@ function getRectangleArea(width, height) {
     return rectangleArea;
 }
 
+
 // 함수 표현식
 let getRectangleArea = function (width, height) {
     let rectangleArea = width * height;
