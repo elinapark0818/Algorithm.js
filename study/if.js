@@ -56,3 +56,79 @@ function convertScoreToGradeWithPlusAndMinus(score) {
     // 최종 결과를 리턴한다
     return gradeLetter + sign;
 }
+
+// ---
+
+function convertScoreToGradeWithPlusAndMinus(score) {
+
+    if (score > 100 || score < 0) {
+        return 'INVALID SCORE';
+    } else if (score === 100) {
+        return 'A+';
+    }
+
+    let grade;
+    let sign = '';
+
+    let tensDigit = Math.floor(score / 10);
+    let digit = score % 10;
+
+    if (tensDigit < 60) {
+        grade = 'F';
+    } else if (tensDigit >= 90){
+        grade = 'A';
+    } else if (tensDigit >= 80){
+        grade = 'B';
+    } else if (tensDigit >= 70){
+        grade = 'C';
+    } else if (tensDigit >= 60){
+        grade = 'D';
+    }
+
+    if (digit > 0 && digit <= 3) {
+        sign = '-'
+    } else if (digit >= 8) {
+        sign = '+'
+    }
+    return grade + sign
+}
+
+//  내가 푼 방법
+function convertScoreToGradeWithPlusAndMinus(score) {
+    // TODO: 여기에 코드를 작성합니다.
+    
+    let grade;
+
+    if (score === 100) {
+        return 'A+';
+    }
+    else if (score > 100 || score < 0) {
+        return 'INVALID SCORE'
+    }
+    else if (score >= 90) {
+        grade = 'A';
+    }
+    else if (score >= 80) {
+        grade = 'B';
+    }
+    else if (score >= 70) {
+        grade = 'C';
+    }
+    else if (score >= 60) {
+        grade = 'D'
+    }
+    else if (score < 60) {
+        return 'F';
+    }
+
+    let digit = score % 10
+    let sign = ''
+
+    if (digit >= 0 && digit <= 2) {
+        sign = '-';
+    }
+    else if (digit >= 8) {
+        sign = '+'
+    }
+    return grade + sign
+    }
