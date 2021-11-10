@@ -132,3 +132,82 @@ function convertScoreToGradeWithPlusAndMinus(score) {
     }
     return grade + sign
     }
+
+function isPythagorean(side1, side2, side3) {
+    // TODO: 여기에 코드를 작성합니다.
+    let side1Pow = Math.pow(side1, 2);
+    let side2Pow = side2 * side2;
+    let side3Pow = side3 ** 2;
+    
+    let case1 = side1Pow === side2Pow + side3Pow;
+    let case2 = side2Pow === side1Pow + side3Pow;
+    let case3 = side3Pow === side1Pow + side2Pow;
+    
+    if (case1 || case2 || case3 === true) {
+        return true
+    }
+    else {
+        return false
+    }
+    }
+
+function or(expression1, expression2) {
+    // TODO: 여기에 코드를 작성합니다.
+    // [ture, false] [true, false]
+    // 4가지 경우의 수 [true, true] [true, false] [false, ture] [false, false]
+    
+    // true, false -> return true
+    if (expression1 === !expression2 && !expression1 === expression2) {
+        return true
+    }
+    // false, true -> return true
+    else if (expression1 !== expression2 && !expression1 !== !expression2) {
+        return true
+    }
+    // true, true -> return true
+    else if (expression1 === expression2 && !expression1 === !expression2) {
+        return true
+    }
+    // false, false -> return false
+    else if (!expression1 === !expression2 && expression1 === expression2){
+        return false
+    }
+}
+
+function or(expression1, expression2) {
+  // TODO: 여기에 코드를 작성합니다.
+  // [ture, false] [true, false]
+  // 4가지 경우의 수 [true, true] [true, false] [false, ture] [false, false]
+
+  if (expression1 && !expression2) {
+    return true
+  }
+  else if (!expression1 && expression2) {
+    return true
+  }
+  else if (expression1) {
+    return true
+  }
+  else if (!expression1){
+    return false
+  }
+}
+
+
+
+  function or(expression1, expression2) {
+
+    //  3개의 true, 1개의 false
+    // true : [true, true] [true, false] [false true]
+    // 1개의 false : [false false]
+    if (!expression1) {
+      if (!expression2){ // false, false
+        return false
+      } else if (expression2) { // false, true
+        return true
+      }
+    }
+    else {
+      return true
+    }
+  }
