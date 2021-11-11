@@ -10,7 +10,8 @@ else {
 }
 
 
-// ---
+// 중복되는 수열 구하기...
+
 function makePermutations(str) {  // 'cat'
     let result = '';
     for (let i=0; i<str.length; i++) {
