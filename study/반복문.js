@@ -83,7 +83,6 @@ console.log(result);    //'ddodog'
 
 //  문자열 내에 중복되는 문자가 있는지 확인하기
 function repeatedChar(str) {
-    let result = '';
 
     if (!str) {
         return false;
@@ -97,6 +96,56 @@ function repeatedChar(str) {
     }
     return false
 }
-
 repeatedChar('hello')
-repeatedChar('')
+
+// 문자열을 입력받아 해당 문자열을 처음부터 한글자씩 다시 작성하기
+// 글자가 추가될때마다 부분적으로 완성된 문자열을 전부 이어붙이기
+
+function makeMarginalString(str) {
+    // TODO: 여기에 코드를 작성합니다.
+    if (!str) {
+        return '';
+    }
+    let result = '';
+
+    for (let i=0; i<str.length; i++) {
+        for (let j=0; j<=i; j++) {
+        result += str[j];
+        }
+    }
+    return result
+}   
+
+
+
+function computePower(base, exponent) {
+    // 거듭제곱 방법 : a*a , 금지a**, 금지Math.pow(a,2)
+    let result = 1;
+    if (exponent === 0) {
+        return 1
+    }
+    for (let i=0; i<exponent; i++) {
+        result *= base
+    }
+    return result
+}
+computePower(2,3)
+
+function getSumOfFactors(num) {
+    // TODO: 여기에 코드를 작성합니다.
+    // num 만큼 반복하는 반복문을 만들어야해  약수는 num보다 작기 때문
+    // 그 안에서 약수를 구해야 하는데, 약수는 num % 약수 === 0  이라는 조건을 성립해야 한다
+    // 약수일 경우 임의의 변수에 더해주면 약수의 합을 구할 수 있겠다
+    let result = 0;
+
+    for (let i=0; i<=num; i++) {
+        if (num % i === 0) {
+        result += i
+        }
+    } return result;
+}
+// 소수 = prime
+// 배수 = multiple
+// 약수 = factor
+// 최대공약수 = GCD(the Greatest Common Denominator)
+// 최소공배수 = LCM(the Lowest Common Multiple)
