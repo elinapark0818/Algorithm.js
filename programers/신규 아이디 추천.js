@@ -43,26 +43,26 @@ if (!new_id) { new_id = 'a'; }
 // 6단계 new_id의 길이가 16자 이상이면, new_id의 첫 15개의 문자를 제외한 나머지 문자들을 모두 제거합니다.
 //      만약 제거 후 마침표(.)가 new_id의 끝에 위치한다면 끝에 위치한 마침표(.) 문자를 제거합니다.
 if (new_id.length >=16) { new_id = new_id.slice(0, 15).replace(/\.$/,''); }
-// 7단계 new_id의 길이가 2자 이하라면, new_id의 마지막 문자를 new_id의 길이가 3이 될 때까지 반복해서 끝에 붙입니다.
+// 7단계 new_id의 길이가 2자 이하라면, new_id의 마지막 문자를 new_id의 길이가 3이 될 때까지 반복해서 끝에 붙입니다. padEnd()
 if (new_id.length <= 2) { new_id = new_id.padEnd(3, new_id[new_id.length - 1]); }
 
 function solution(new_id) {
     new_id = new_id
-        .toLowerCase()
-        .replace(/[^\w\.\-]/g, '')
-        .replace(/[\.]{2,}/g, '.')
-        .replace(/^\./, '')
-        .replace(/\.$/, '');
+        .toLowerCase()  // 1. new_id 에 있는 영문자를 소문자로 치환한다
+        .replace(/[^\w\.\-]/g, '')  // 2. 영문자와 숫자 '-'와 '.'를 대응해서(\w) 전역을 조회하고(\g), ''로 바꾼다?
+        .replace(/[\.]{2,}/g, '.')  // 3. '.'으로 시작하는 것이 2개일 때를 대응해서 '.'으로 바꾼다
+        .replace(/^\./, '')     // 4. '.'을 제외하고 대응 했을 때 ','를 ''으로 바꾼다?
+        .replace(/\.$/, '');    // 5. '.'을 대응하고, 마지막이 ','일때를 대응해서  ''으로 바꾼다
     if (!new_id) {
-        new_id = "a";
+        new_id = "a";   // 6. new_id가 빈 문자열이라면 'a'를 할당한다
     }
-    if (new_id.length >= 16) {
+    if (new_id.length >= 16) {  // 7. new_id의 길이가 16이상이라면
         new_id = new_id
-            .slice(0, 15)
-            .replace(/\.$/, '');
+            .slice(0, 15)   // 8. index 0~ 15까지 자르고
+            .replace(/\.$/, '');    // 9. '.'과 마지막이 ','인 것을 ''으로 바꾼다
     }
-    if (new_id.length <= 2) {
-        new_id = new_id.padEnd(3, new_id[new_id.length - 1]);
+    if (new_id.length <= 2) {   // new_id의 길이가 2이하라면
+        new_id = new_id.padEnd(3, new_id[new_id.length - 1]);   //3이 될때까지 반복한다?
     }
     return new_id;
 }
@@ -70,14 +70,15 @@ function solution(new_id) {
 // 다른 풀이 : 정규식과 삼항연산자를 활용한 풀이
 function solution(new_id) {
     const answer = new_id
-        .toLowerCase() // 1
-        .replace(/[^\w-_.]/g, '') // 2
-        .replace(/\.+/g, '.') // 3
-        .replace(/^\.|\.$/g, '') // 4
-        .replace(/^$/, 'a') // 5
-        .slice(0, 15).replace(/\.$/, ''); // 6
-    const len = answer.length;
-    return len > 2 ? answer : answer + answer.charAt(len - 1).repeat(3 - len);
+        .toLowerCase() // 1. new_id 에 있는 영문자를 소문자로 치환한다
+        .replace(/[^\w-_.]/g, '') // 2. 영문자와 숫자 '-'를 대응해서(\w) 전역을 조회하고(\g), ''로 바꾼다?
+        .replace(/\.+/g, '.') // 3. 문자 그대로의 '.'을 대응해서 '.'으로 바꾼다?
+        .replace(/^\.|\.$/g, '') // 4. '.'이 처음으로 시작할 때 또는 '.'이 전역의 마지막으로 끝날 때를 대응해서 ''로 바꾼다?
+        .replace(/^$/, 'a') // 5. 처음과 끝을 제외한 나머지 문자들을 대응해서 'a'로 바꾼다
+        .slice(0, 15).replace(/\.$/, ''); // 6. 문자열을 index 0 ~ 15 전 까지 자르고, '.' 과 마지막에 있는 ','를 ''로 바꾼다?
+    const len = answer.length;  // 문자열의 길이를 변수 len에 할당한다
+    return len > 2 ? answer : answer + answer.charAt(len - 1).repeat(3 - len); 
+    // len이 2보다 크다면, (answer와 len의 길이보다 1작은 값을 유니코드로 바꾼 값이 3에서 len값을 뺀 값이 될때까지 반복해서) answer에 더한다
 }
 
 
@@ -117,3 +118,26 @@ const str = new RegExp('ab+c');
 
 // . : 개행 문자(줄바꿈)을 제외한 모든 단일 문자와 대응된다
 // 예를들어 /.n/ 는 ' n, an, on, n '에서 'an'과 'on'에 대응되지만, ' n', ' n '에는 되응되지 않는다
+
+// | : 또는 
+
+// [:alnum:] : 영문자와 숫자를 뜻한다. [A-Za-z0-9]
+
+// \w : 영문자와 숫자 그리고 밑줄 문자를 뜻한다. [A-Za-z0-9_]
+
+// \W : 영문자와 숫자 그리고 밑줄 문자를 제외한 문자를 뜻한다. [^A-Za-z0-9_]
+
+// [:alpha:] : 영문자를 뜻한다. [A-Za-z]
+
+// [:upper:] : 알파벳 대문자를 뜻한다. [A-Z]
+
+// [:lower:] : 알파벳 소문자를 뜻한다. [a-z]
+
+// \d : 숫자를 뜻한다. [0-9]
+
+// \D : 숫자를 제외한 문자를 뜻한다. [^0-9]
+
+// [:blank:] : 공백과 탭 문자를 뜻한다. [\t]
+
+// \b : 단어 사이의 경계를 뜻한다. [(?<=\W)(?=\w)|(?<=\w)(?=\W)]
+
