@@ -8,11 +8,9 @@
 3. 화이팅!!!
 
 ---
-
-## github push error
-
-    git config --global unset elinapark0818
-    git config --global unset elinapark0818@gmail.com
-    git config --global unset credential.helper
-    
-    computer logout & login
+## 문제를 단번에 풀지 못 할 경우
+1. 풀이를 찾아본다
+2. 풀이를 따라서 코드를 작성한다
+3. 작성한 코드에 수도코드를 작성한다
+4. 문제를 풀기 위한 함수, 메소드, 방법을 찾아본다
+5. 다시 풀어본다
