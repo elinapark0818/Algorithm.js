@@ -101,3 +101,26 @@ const solution = (board, moves) => {
 // transpose([[0, 0, 0, 0, 0], [0, 0, 1, 0, 3], [0, 2, 5, 0, 1], [4, 2, 4, 4, 2], [3, 5, 1, 3, 1]])이기 때문에
 // [[0, 0, 0, 4, 3],[0, 0, 2, 2, 5],[0, 1, 5, 4, 1],[0, 0, 0, 4, 3],[0, 3, 1, 2, 1]] 된다.
 // 5 X 5 배열의 행과 열을 바꾸어주는 것과 같다.
+
+//  splice() 와 length 로 푸는 방법
+
+function solution(board, moves) {
+  let answer = 0;
+  let arr = [];
+  for (let i = 0; i < moves.length; i++) {
+    for (let j = 0; j < board.length; j++) {
+      if (board[j][moves[i] - 1] !== 0) {
+        arr.push(board[j][moves[i] - 1]);
+        board[j][moves[i] - 1] = 0;
+        break;
+      }
+    }
+    if (arr.length >= 2) {
+      if (arr[arr.length - 1] === arr[arr.length - 2]) {
+        answer += 2;
+        arr.splice(arr.length - 2, 2);
+      }
+    }
+  }
+  return answer;
+}
