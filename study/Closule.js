@@ -5,6 +5,15 @@
 // 내부 어휘적 환경에서 찾고 없으면 외부 어휘적 환경에서 찾고
 // 외부 어휘적 환경에서도 없으면 전역 어휘적 환경에서 찾는다.
 
+function outFunction() {
+  const str = "Here I am!";
+  function inFunction() {
+    console.log(str);
+  }
+  inFunction();
+}
+outFunction(); // Here I am!
+
 // ! 스크립트 내에서 선언한 변수들이 어휘적 환경에 등록된다
 
 // 함수 선언문은 변수와 다르게 바로 초기화된다. (= addTen() 사용 가능)

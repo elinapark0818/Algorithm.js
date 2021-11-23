@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closure</title>
+  </head>
+  <body>
+    <div class="container">
+      <button
+        class="toggle"
+        style="
+          font-size: 2em;
+          border: 5px solid purple;
+          border-radius: 10px;
+          background: rgb(189, 189, 230);
+          color: white;
+          margin: 2em;
+          margin-left: 12em;
+          cursor: pointer;
+        "
+      >
+        Click!
+      </button>
+      <div
+        class="box"
+        style="
+          background: rgb(154, 211, 154);
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 10em;
+          height: 10em;
+          margin-left: 4em;
+          color: white;
+          font-weight: bold;
+          font-size: 3em;
+        "
+      >
+        I am box
+      </div>
+    </div>
+
+    <script>
+      const box = document.querySelector(".box");
+      const toggleBtn = document.querySelector(".toggle");
+
+      let toggle = (() => {
+        let isShow = false;
+        return function () {
+          box.style.display = isShow ? "flex" : "none";
+          isShow = !isShow;
+        };
+      })();
+      toggleBtn.onclick = toggle;
+    </script>
+  </body>
+</html>
