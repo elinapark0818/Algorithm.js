@@ -174,7 +174,7 @@ console.log(num2);
 var num1 = 10;
 
 function foo() {
-  num2 = 20;  // 선언되지 않은 변수 num에 20이 할당되었다.
+  num2 = 20;  // 선언되지 않은 변수 num2에 20이 할당되었다.
   console.log(num1 + num2);
 }
 
