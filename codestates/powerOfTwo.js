@@ -11,7 +11,7 @@ function powerOfTwo(num) {
   }
 
   // 2의 거듭제곱 여부를 확인해야 하니, 임의의 변수에 2를 할당하자
-  const power = 2;
+  let power = 2;
   // while문을 사용해야한다.
   // 2의 1승은 2니까, num은 2보다 커야한다.
   while (power < num) {
