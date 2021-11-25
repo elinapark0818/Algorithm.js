@@ -7,4 +7,4 @@ function interestCalculator(rate, payment, term) {
 interestCalculator(0.005, 500000, 12); // 이자는 16,250원이다.
 
 // 이율이 15% 일때, 매월 60만원씩 24개월 납부할 경우
-interestCalculator(0.03, 600000, 24); // 이자는 450,000원이다.
+interestCalculator(0.015, 600000, 24); // 이자는 225,000원이다.
