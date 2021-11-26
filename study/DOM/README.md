@@ -25,6 +25,10 @@ HTML 또는 XML로 작성된 문서에 적용할 스타일을 작성하기 위�
 
 ### node
 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/74189121/143578444-38b44c64-3d1c-4f3c-9b77-7ac635ad5115.png" width="200"/>
+</p>
+
 DOM API 에 존재하는 모든 것들을 포괄하는 이름이 node 이다.
 
 node 밑에 element가 있다
@@ -97,6 +101,10 @@ DOM 은 root 에서부터 여러 node 들이 뻗어 나오는 tree라고 생각�
 <br/>
 
 ## DOM 의 property
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/74189121/143579281-80536c2d-aa85-4ebe-9cce-c54d3712c3d1.png"/>
+</p>
 
 node 에 있는 DOM property 와
 element 에 있는 DOM property 를 구분할 줄 알아야 한다.
