@@ -1,6 +1,6 @@
 Math.random();
 
-// Math.random() dms 0과 1사이의 실수를 리턴한다.(1 미포함
+// Math.random() : 0과 1사이의 실수를 리턴한다.(1 미포함
 console.log(Math.random());
 
 // Math.floor(Math.random())
