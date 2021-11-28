@@ -9,7 +9,7 @@ function lottoNum() {
     }
   }
   function sameNum(n) {
-    for (var i = 0; i < lotto.length; i++) {
+    for (let i = 0; i < lotto.length; i++) {
       if (n === lotto[i]) {
         return true;
       }
