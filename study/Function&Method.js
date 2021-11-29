@@ -20,6 +20,9 @@ let secondSubstr = str.substr(1, 1);
 console.log(secondSubstr); // 나
 let lastSubstr = str.substr(str.length - 1, 1);
 console.log(lastSubstr); // !
+// substr에 start만 넣으면, start 부터 끝까지의 문자열을 반환한다
+let oneValue = str.substr(1);
+console.log(oneValue); // 나다!
 
 // .substring(from, to) : 문자열의 특정 구간에 해당하는 문자열을 반환한다
 let firstSubstring = str.substring(0, 1);
