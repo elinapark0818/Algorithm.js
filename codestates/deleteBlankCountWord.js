@@ -6,9 +6,7 @@ function deleteBlankCountWord(str) {
   // 단어로 찢어주기
   let word = lowerStr.split(" ");
   // 공백제거
-  let filter = word.filter(function (a) {
-    return a.length !== 0;
-  });
+  let filter = word.filter((a) => a.length !== 0);
 
   // 단어들을 확인해서
   for (let i = 0; i < filter.length; i++) {
