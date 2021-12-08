@@ -1,4 +1,4 @@
-function muitipleZeroIndex(num) {
+function multipleZeroIndex(num) {
   // TODO: 여기에 코드를 작성합니다.
   // 반복문
   // 계속 곱하는거니까 reduce 쓰면 될듯
