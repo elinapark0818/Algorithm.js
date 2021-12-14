@@ -1,6 +1,6 @@
 작은 조각으로 쪼개어 푸는 것은 분할 정복 알고리즘
 
-### 메모리제이션
+### memoization
 
 이전에 계산된 결과를 캐싱하여 함수의 성능을 높이려는 프로그래밍 기술
 
@@ -15,19 +15,19 @@
 
 5. 메모이제이션은 자주 호출되지 않거나 빠르게 실행되는 기능에는 적합하지 않을 수 있습니다.
 
-### 메모리제이션 컨셉
+### memoization 특징
 
 - 클로저
 - 고차함수
 
-### 메모리제이션이 도움이 되는 경우
+### memoization 도움이 되는 경우
 
 1. 비싼 함수 호출, 즉 무거운 계산을 수행하는 함수
 2. 캐시된 값이 아무것도 하지 않는 것처럼 제한적이면서 매우 반복적인 입력 범위를 가진 함수
 3. 반복 입력 값이 있는 재귀 함수
 4. 특정 입력으로 호출 될 때마다 동일한 출력을 반환하는 함수
 
-### 피보나치 수열을 구하는 함수에 메모리제이션 적용하기
+### 피보나치 수열을 구하는 함수에 memoization 적용하기
 
 ```
 const fibonacci = (function() {
@@ -54,7 +54,7 @@ const fibonacci = (function() {
 })();
 ```
 
-### 메모리제이션 함수형 접근
+### memoization 함수형 접근
 
 ```
 function memoizer(fun){
@@ -68,5 +68,35 @@ function memoizer(fun){
           return result
         }
     }
+}
+```
+
+### 동적 계획법(DP)과 memoization을 적용한 피보나치
+
+```
+function fibMemo(n, memo = []) {
+    if(memo[n] !== undefined) return memo[n];
+
+    if(n <= 2) return 1;
+
+    let res = fibMemo(n-1, memo) + fibMemo(n-2, memo);
+
+    memo[n] = res;
+
+    return res;
+}
+```
+
+### DP와 반복문 배열을 적용한 피보나치
+
+```
+function fibTab(n) {
+    if(n <= 2) return 1;
+    let fibNum = [0, 1, 1];
+
+    for(let i = 3; i <= n; i++) {
+        fibNum[i] = fibNum[i-1] + fibNum[i-2];
+    }
+    return fibNum[n];
 }
 ```
