@@ -4,6 +4,8 @@ function take(num, arr) {
   return take(num - 1, arr.slice(0, arr.length - 1));
 }
 
+// 레퍼런스
+
 function take(num, arr) {
   if (num === 0 || arr.length === 0) {
     return [];

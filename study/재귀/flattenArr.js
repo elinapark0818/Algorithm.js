@@ -10,7 +10,7 @@ function flattenArr(arr) {
   // 배열의 요소를 하나씩 확인한다.
   for (let i = 0; i < arr.length; i++) {
     // number 타입일 경우 result에 담는다
-    if (typeof arr[i] === "number") {
+    if (arr[i] === "number") {
       result.push(arr[i]);
       // 배열안 요소가 배열일 경우
     } else if (Array.isArray(arr[i])) {
@@ -38,4 +38,13 @@ function flattenArr(arr) {
   } else {
     return [head].concat(flattenArr(tail));
   }
+}
+
+function flattenArr(arr) {
+  if (!arr.length) return [];
+
+  if (Array.isArray(arr[0])) {
+    return flattenArr([...arr[0], ...arr.slice(1)]);
+  }
+  return [arr[0]].concat(flattenArr(arr.slice(1)));
 }
