@@ -2,10 +2,11 @@ class GraphWithAdjacencyMatrix {
   constructor() {
     this.matrix = [];
   }
-  //버텍스 추가
+  // 정점 추가
   addVertex() {
     // 현재 matrix 배열의 길이
     const currentLength = this.matrix.length;
+
     for (let i = 0; i < currentLength; i++) {
       this.matrix[i].push(0);
     }

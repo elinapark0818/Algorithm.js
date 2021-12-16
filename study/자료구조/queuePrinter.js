@@ -2,15 +2,29 @@
 // capacities : 작업 공간의 용량
 // documents : 인쇄할 목록을 담은 배열
 
-// [7, 4, 5, 6]  10, length = 2
-// count 1 , list 추가 [#, 7]
-// count 2 , 앞으로 이동 [7, #]
-// count 3 , list 추가 [#, 4]
-// count 4 , 앞으로 이동 list 추가 [4, 5]
-// count 5 , 앞으로 이동 [5, #]
-// count 6 , list 추가 [#, 6]
-// count 7 , 앞으로 이동 [6, #]
-// count 8 , 전부 인쇄 끝 [#, #]
+```예시 documents = [7, 4, 5, 6]  capacities = 10, bufferSize = 2
+[#, #]
+뒤 요소(#)를 빼고, 7 을 추가, documents에 있는 7 삭제
+time 1 , list 추가 [#, 7]
+앞 요소(#)를 빼고 4를 넣으면 용량을 초과하니 대체값(#) 추가
+time 2 , 앞으로 이동 [7, #]
+앞 요소 처리(출력=프린트)하고, bufferSize 맞추기 위한 대체값(#) 추가
+documents에 있는 4 삭제
+time 3 , list 추가 [#, 4]
+앞 요소(#) 빼고 5 추가
+documents에 있는 5 삭제
+time 4 , 앞으로 이동 list 추가 [4, 5]
+앞 요소(4) 처리(출력=프린트)하고, 6을 추가하면 용량을 초과하니 bufferSize 맞추기 위한 대체값(#) 추가
+time 5 , 앞으로 이동 [5, #]
+앞 요소(5) 처리(출력=프린트)하고, 6 추가
+documents에 있는 6 삭제
+time 6 , list 추가 [#, 6]
+앞 요소 처리, bufferSize 맞추기 위한 대체값(#) 추가
+time 7 , 앞으로 이동 [6, #]
+앞 요소(6) 처리(출력=프린트)하기
+documents.length === 0
+time 8 , 전부 인쇄 끝 [#, #]
+```;
 function queuePrinter(bufferSize, capacities, documents) {
   // 작업 목록을 담을 배열
   let list = [];
