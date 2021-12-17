@@ -11,10 +11,19 @@ class GraphWithAdjacencyMatrix {
       this.matrix[i].push(0);
     }
     this.matrix.push(new Array(currentLength + 1).fill(0));
+
+    // 처음에 [] 이니까 for문은 안돈다.
+    // new Array(currentLength + 1).fill(0) : 1길이의 배열을 추가한다. 0으로 채워서
+    // matrix = [ [0] ]
+    // [ [0, 0], [0, 0] ]
+    // [ [0, 0, 0], [0, 0, 0], [0, 0, 0] ]
   }
 
   // 버텍스(인덱스)가 있는지 확인
+  // boolean
   contains(vertex) {
+    // if (this.matrix[vertex]) {return true}
+    // return false
     if (0 <= vertex && vertex < this.matrix.length) {
       return true;
     }
@@ -38,6 +47,8 @@ class GraphWithAdjacencyMatrix {
       console.log("범위가 매트릭스 밖에 있습니다.");
       return;
     }
+    // from = 1 , to = 2
+    // 1번째 인덱스의 2번째 요소 (행과 열, 행렬)
     this.matrix[from][to] = 1;
   }
 
