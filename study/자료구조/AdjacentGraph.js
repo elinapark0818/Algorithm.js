@@ -41,5 +41,3 @@ class AdjacentGraph {
     }
   }
 }
-
-module.exports = AdjacentGraph;

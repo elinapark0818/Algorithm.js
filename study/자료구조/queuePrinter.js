@@ -4,7 +4,7 @@
 
 ```예시 documents = [7, 4, 5, 6]  capacities = 10, bufferSize = 2
 [#, #]
-뒤 요소(#)를 빼고, 7 을 추가, documents에 있는 7 삭제
+앞 요소(#)를 빼고, 7 을 추가, documents에 있는 7 삭제
 time 1 , list 추가 [#, 7]
 앞 요소(#)를 빼고 4를 넣으면 용량을 초과하니 대체값(#) 추가
 time 2 , 앞으로 이동 [7, #]
@@ -33,8 +33,6 @@ function queuePrinter(bufferSize, capacities, documents) {
 
   // documents 에 0번째 요소를 뺀 값을 넣자.
   let doc = documents.shift();
-  // 작업목록에 일단 추가를 한다.
-  list.push(doc);
 
   // 남은 작업 공간에 0을 채워줌
   // fill 이 안됨..
@@ -43,9 +41,11 @@ function queuePrinter(bufferSize, capacities, documents) {
     list.push(0);
   }
 
+  // 작업목록에 일단 추가를 한다.
+  list.push(doc);
+
   // 타이머 : 1초에서 시작하고
   // 사이즈는 capacities 랑 비교해야 하니까 담아놓자
-
   let size = doc;
 
   // 일단
