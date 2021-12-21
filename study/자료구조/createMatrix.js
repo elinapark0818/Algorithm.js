@@ -88,11 +88,9 @@ function createMatrix(edges) {
 
   edges.array.forEach((element) => {
     const [row, col, direction] = element;
-
-    if (direction === "directed") {
-      // 정점 간의 간선이 이어져야 한다
-      matrix[row][col] = 1;
-    } else if (direction === "undirected") {
+    // 정점 간의 간선이 이어져야 한다
+    matrix[row][col] = 1;
+    if (direction === "undirected") {
       // element[2] === "undirected" 인 경우
       matrix[col][row] = 1;
     }
@@ -130,10 +128,8 @@ function createMatrix(edges) {
   // [ 0, 0, 0, 1 ] => 0번째 버텍스가 갈 수 있는 간선 중, 3 번으로 가는 간선만 갈 수 있습니다.
   edges.forEach((edge) => {
     const [row, col, direction] = edge;
-    if (direction === "directed") {
-      result[col][row] = 1;
-    } else if (direction === "undirected") {
-      result[row][col] = 1;
+    result[row][col] = 1;
+    if (direction === "undirected") {
       result[col][row] = 1;
     }
   });
@@ -191,3 +187,19 @@ function createMatrix(edges) {
 
 // ! 간선이 있으려면 [row][col] = 1 이 반드시 필요하다.
 // todo : 무향의 경우 [col][row] = 1 없이도 둘다 간선이 생기는 것은 이해가 부족하다
+
+// 1. edges.forEach((edge) => {
+// 2.    const [row, col, direction] = edge;
+// 3.    if (direction === 'undirected') {
+// 4.      result[row][col] = 1
+// 5.      result[col][row] = 1 // 이 부분도 있어야 할 것 같다.
+// 6.    }
+// 7.    result[row][col] = 1
+// 8.  })
+
+// direction === directed
+// 7. result[row][col] = 1 를 만나게 된다
+
+// 3. ~ 6. 은 if문 안에서는 result[row][col] = 1 가 적용된다면
+// 무향성이던지, 방향성이던지 반드시 result[row][col] = 1 를 만나게 된다
+// 따라서, 무향성의 경우 result[col][row] = 1; 만 적용되도 양쪽에 간선이 생긴다.
