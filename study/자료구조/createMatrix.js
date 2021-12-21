@@ -141,3 +141,53 @@ function createMatrix(edges) {
   // result를 반환합니다.
   return result;
 }
+
+// const result = [
+//   [row, col],
+//   [row, col]
+// ];
+
+// 4 가지 경우의 수
+// [0][0]
+// [0][1]
+// [1][0]
+// [1][1]
+
+// result[row][col] = 1
+// result[col][row] = 1
+// const result = [
+//   [1, col], // [0][0]
+//   [row, 1]  // [0][1]
+// ? [1, 1]
+//   [1, col], // [1][0]
+//   [row, 1]  // [1][1]
+// ? [1, 1]
+// ];
+
+// result[row][col] = 1
+// const result = [
+//   [1, col], // [0][0]
+//   [row, 1]  // [0][1]
+// ? [1, 1]
+//   [1, col], // [1][0]
+//   [row, 1]  // [1][1]
+// ? [1, 1]
+// ];
+
+// [0][1] , [1][0] 이건 언제 적용되는거지..
+
+// result[col][row] = 1
+// const result = [
+//  ! [row, col],  // [0][0]
+//   [1, col]     // [1][0]
+// ? [0, 1]
+//  ! [row, col]   // [1][1]
+//   [row, 1]     // [0][1]
+// ? [1, 0]
+// ];
+
+// undirected 일 때는 result[row][col] = 1
+// directed 일 때는 result[col][row] = 1
+
+// ! 간선이 있으려면 [row][col] = 1 이 반드시 필요하다.
+// todo : 무향의 경우 [col][row] = 1 없이도 둘다 간선이 생기는 것은 이해가 부족하다
