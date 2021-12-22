@@ -1,4 +1,4 @@
-// Breadth First Search
+// Depth First Search
 
 class Tree {
   constructor() {
@@ -6,7 +6,7 @@ class Tree {
   }
 
   // BFS는 콜백함수를 인자로 받는다.
-  BFS(func) {
+  DFS(func) {
     // 아직 트리가 없다면 아무것도 실행하지 않는다
     if (this.root === null) return;
 
@@ -16,14 +16,15 @@ class Tree {
       // yet의 맨 앞의 요소를 디큐
       const current = yet.shift();
       // 현재 부모노드의 자식노드들을 모두 큐에 넣는다
-      yet.push(...current.children);
+      // ! 먼저 탐색하도록 자식노드들을 앞에 넣는다
+      yet.unshift(...current.children);
       // 현재노드를 콜백함수 실행
       func(current);
     }
   }
 }
 
-const letterBFS = [];
+const letterDFS = [];
 
 const t = new Tree();
 t.root = new Node("a");
@@ -31,6 +32,6 @@ t.root.add("b");
 t.root.add("d");
 t.root.children[0].add("c");
 
-t.BFS((node) => letterBFS.push(node.data));
+t.DFS((node) => letterDFS.push(node.data));
 
-// [‘a’, ‘b’, ‘d’, ‘c’]
+// [‘a’, ‘b’, ‘c’, ‘d’]
