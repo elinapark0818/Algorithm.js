@@ -31,7 +31,7 @@ JavaScript에서는 객체 인스턴스와 프로토타입 간에 연결이 구�
 ### 객체의 prototype 함수
 
 `Object.getPrototypeOf(obj)` 또는
-`deprecated 된 \_\_proto\_\_ 속성`으로 접근할 수 있다
+`deprecated 된 __proto__ 속성`으로 접근할 수 있다
 
 ### 예제
 
