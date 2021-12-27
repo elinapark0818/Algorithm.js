@@ -139,6 +139,28 @@ export default Inputs;
 3. deps에 넣은 파라미터값이 업데이트 됬을때 실행.
    - componentDidUpdate처럼 실행.
 
+```
+useEffect(function, [종속성1, 종속성2, ...])
+```
+
+useEffect의 두 번째 인자는 종속성 배열이다.
+배열 내의 종속성1, 또는 종속성2의 값이 변할 때
+첫 번째 인자의 함수가 실행된다.
+
+### 단 한번만 실행되는 Effect 함수
+
+종속성 목록에 아무런 종속성도 없다면?
+(두 번째 배열을 빈 배열로 둔다면)
+
+```
+- useEffect(function, [])
+- useEffect(function)
+```
+
+컴포넌트가 처음 생성될 때만! effect 함수가 실행된다.
+
+=> 외부 API를 통해 리소스를 받아오고, 더 이상 API 호출이 필요하지 않을 때 사용한다
+
 ### 생명주기
 
 - mount
