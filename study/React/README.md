@@ -129,8 +129,6 @@ export default Inputs;
 
 ```
 
-## b
-
 ## useEffect
 
 1. 화면이 처음 떴을때 실행.
@@ -141,14 +139,16 @@ export default Inputs;
 3. deps에 넣은 파라미터값이 업데이트 됬을때 실행.
    - componentDidUpdate처럼 실행.
 
-### mount
+### 생명주기
+
+- mount
 
 1. props 로 받은 값을 컴포넌트의 로컬상태로 설정
 2. 외부 API 요청(REST API 등)
 3. 라이브러리 사용
 4. setInterval 를 통한 반복작업 또는 setTimeout을 통한 작업 예약
 
-### unmount
+- unmount
 
 1. setInterval, setTimeout 을 사용하여 등록한 작업들 clear (=== clearInterval, clearTimeout)
 2. 라이브러리 인스턴스 제거
@@ -215,5 +215,4 @@ function InputsUseRef() {
 }
 
 export default InputsUseRef;
-
 ```
