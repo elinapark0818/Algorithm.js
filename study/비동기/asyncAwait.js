@@ -2,7 +2,7 @@ function a() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(`I am A`);
-    }, 100);
+    }, 500);
   });
 }
 
@@ -10,7 +10,7 @@ function b() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(`I am B`);
-    }, 200);
+    }, 400);
   });
 }
 
@@ -26,23 +26,24 @@ function d() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(`I am D`);
-    }, 400);
+    }, 200);
   });
 }
 
-a()
-  .then((data) => {
-    console.log(data);
-    return b();
-  })
-  .then((data) => {
-    console.log(data);
-    return c();
-  })
-  .then((data) => {
-    console.log(data);
-    return d();
-  })
-  .then((data) => {
-    console.log(data);
-  });
+// Promise 인데, 동기적인 것처럼 작성된 것.(일반 함수를 실행하는 것처럼 보인다)
+// 코드 가독성이 높아진다
+const result = async () => {
+  const one = await a();
+  console.log(one);
+
+  const two = await b();
+  console.log(two);
+
+  const three = await c();
+  console.log(three);
+
+  const four = await d();
+  console.log(four);
+};
+
+result();
