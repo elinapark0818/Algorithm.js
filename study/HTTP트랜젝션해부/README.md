@@ -95,10 +95,12 @@ POST, PUT 요청을 받을 때, 요청 바디는 중요하다.
 
 각 'data' 이벤트에서 발생시킨 chunk는 Buffer이다.
 chunk는 문자열 데이터이기 때문에 'data'를 배열에 담고
-end 이벤트에서 이어붙인 다음 ㅁ눈자열로 만드는 것이 가장 좋다.
+end 이벤트에서 이어붙인 다음 문자열로 만드는 것이 가장 좋다.
 
+```js
 (응답 헤더작성) response 객체의 메소드 : writeHead(statusCode, object)
 (응답 바디작성) response 객체의 메소드 : end([data], [encoding])
+```
 
 ```js
 const defaultCorsHeader = {
