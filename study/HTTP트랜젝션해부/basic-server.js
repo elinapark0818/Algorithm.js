@@ -4,59 +4,49 @@ const PORT = 4999;
 
 const ip = "localhost";
 
-const server = http.createServer((request, response) => {
+const server = http.createServer();
+server.on("request", (request, response) => {
   // todo : GET을 제외한 HTTP 메소드의 경우 OPTIONS preflight
-  // 메소드가 OPTIONS 일때 CORS 처리
   if (request.method === "OPTIONS") {
-    // todo :
-    // ? (응답 헤더작성) response 객체의 메소드 : writeHead(statusCode, object)
-    // ? (응답 바디작성) response 객체의 메소드 : end([data], [encoding])
+    // ! CORS 처리해주면서 성공코드를 응답헤더에 작성한다
     response.writeHead(200, defaultCorsHeader);
+    // ? 응답 바디 작성
     response.end();
   }
-  // 메소드가 POST 일 때
+  // todo : 요청 메소드가 POST 일때
   if (request.method === "POST") {
-    // url이 /upper 일 때
-    if (request.url === "/upper") {
-      let data = "";
-      // todo : request 객체의 메소드
-      // ? emitter.on(eventName, listener)
-      // ? => 'data' 이벤트를 생성하고, listener 콜백함수
-      // ! chunk = Buffer : 데이터를 전송할 때 임시로 보관하는 메모리 영역
-      // ! => 브라우저에서 받은 JSON 파일을 임시로 저장하는 보관소
-      request.on("data", (chunk) => {
-        data = data + chunk;
+    let body = [];
+    request
+      .on("data", (chunk) => {
+        // ! chunk : 데이터를 쪼개놓은 거. 임시 저장소 Buffer 담겨 있다.
+        console.log(chunk); // <Buffer 22 66 64 22>
+        body.push(chunk);
+      })
+      .on("end", () => {
+        body = Buffer.concat(body).toString();
+        // todo : 대문자로 응답 하기
+        if (request.url === "/upper") {
+          // ? 응답헤더 성공코드 작성하면서 CORS 처리
+          response.writeHead(200, defaultCorsHeader);
+          // ? 응답바디 대문자로 변환해서 작성하기
+          response.end(body.toUpperCase());
+        }
+        // todo : 소문자로 응답 하기
+        else if (request.url === "/lower") {
+          // ? 응답헤더 성공코드 작성하면서 CORS 처리
+          response.writeHead(200, defaultCorsHeader);
+          // ? 응답바디 소문자로 변환해서 작성하기
+          response.end(body.toLowerCase());
+        }
       });
-      // todo : response 객체의 메소드
-      // ? writeHead(statusCode, object)
-      // ? end([data], [encoding])
-      request.on("end", () => {
-        // ? : data에 저장된 문자열을 대문자로 변환
-        data = data.toUpperCase();
-        // ? 서버가 다시 브라우저에게 요청에 대한 응답을 보낸다
-        response.writeHead(200, defaultCorsHeader);
-        // ? : App.js 파일로 다시 돌아간다
-        response.end(data);
-      });
-    } else if (method.url === "/lower") {
-      let data = "";
-      request.on("data", (chunk) => {
-        data = data + chunk;
-      });
-      request.on("end", () => {
-        // ? : data에 저장된 문자열을 소문자로 변환
-        data = data.toLowerCase();
-        // ? 서버가 다시 브라우저에게 요청에 대한 응답을 보낸다
-        response.writeHead(200, defaultCorsHeader);
-        // ? : App.js 파일로 다시 돌아간다
-        response.end(data);
-      });
-    }
   }
   // todo : 그 외의 경우 전부 404 에러 bad request 처리
   else {
+    // ? 에러로 처리할건데,
     request.on("error", (err) => {
+      // ? 일단, CORS 처리해서 응답 헤더 작성하고
       response.writeHead(404, defaultCorsHeader);
+      // ? console.error 로 "bad request" 에러로 출력시키기
       console.error(err, "bad request");
     });
   }
