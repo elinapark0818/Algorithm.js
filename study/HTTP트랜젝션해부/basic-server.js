@@ -19,7 +19,7 @@ server.on("request", (request, response) => {
     request
       .on("data", (chunk) => {
         // ! chunk : 데이터를 쪼개놓은 거. 임시 저장소 Buffer 담겨 있다.
-        console.log(chunk); // <Buffer 22 66 64 22>
+        console.log(chunk); // <Buffer 22 66 64 22> 라고 터미널에 뜨더라
         body.push(chunk);
       })
       .on("end", () => {
@@ -58,6 +58,12 @@ server.listen(PORT, ip, () => {
 
 const defaultCorsHeader = {
   // todo : 어떠한 origin이라도 공유를 허락한다.
+  // ! todo : Advanced
+  // ? 1. npm install serve
+  // ? 2. npx serve client (새로운 터미널창에서 클라이언트 서버를 연다)
+  // ? 3. nodemon 설치하고(npm i nodemon --save), package.json 에서 "start": "nodemon server/basic-server.js",
+  // ? 4. "Access-Control-Allow-Origin": "http://localhost:3000", 으로 설정 (기본 포트번호가 5050이다.)
+  // ? 5. npm run start
   "Access-Control-Allow-Origin": "*",
   // todo : 서버는 요청 메소드로 'GET, POST, PUT, DELETE, OPTIONS' 만 허락하겠다.
   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
