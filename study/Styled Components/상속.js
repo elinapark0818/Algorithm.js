@@ -2,30 +2,30 @@ import styled from "styled-components";
 import React from "react";
 
 const Thing = styled.div`
-  color: blue;
+  color: blue; // 기본 컴포넌트(<Thing>)의 color는 blue
 
   &:hover {
-    color: red; // <Thing> when hovered
+    color: red; // 기본 컴포넌트(<Thing>) hover 시 color 가 red
   }
 
   & ~ & {
-    background: tomato; // <Thing> as a sibling of <Thing>, but maybe not directly next to it
+    background: tomato; // <Thing> 과 붙어있는 컴포넌트(<Thing>)의 배경색깔을 tomato
   }
 
   & + & {
-    background: lime; // <Thing> next to <Thing>
+    background: lime; // <Thing> 다음에 오는 컴포넌트(<Thing>)의 배경색깔을 lime
   }
 
   &.apple {
-    background: orange; // <Thing> tagged with an additional CSS class ".apple"
+    background: orange; // className이 apple 인 컴포넌트(<Thing>)의 배경색깔을 orange
   }
 
   .banana & {
-    border: 1px solid; // <Thing> inside another element labeled ".banana"
+    border: 1px solid; // 부모 엘리먼트의 className이 banana인 컴포넌트(<Thing>) 은 border를 갖는다
   }
 
   .blueberry {
-    background-color: yellow; // an element labeled ".blueberry" inside <Thing> without ampersand(&)
+    background-color: yellow; // & 를 적용하지 않은 경우 스타일이 중첩되지 않는다.
   }
 `;
 
