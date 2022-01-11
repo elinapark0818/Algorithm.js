@@ -1,5 +1,7 @@
 function fibonacci(n) {
   let arr = [0, 1];
+  // * count
+  let count = 0;
 
   let fib = (n) => {
     //함수 한개를 선언해주고
@@ -10,5 +12,9 @@ function fibonacci(n) {
     return arr[n];
   };
 
-  return fib(n);
+  // return fib(n);
+  return () => {
+    count++;
+    return fib(count - 1);
+  };
 }
