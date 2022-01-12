@@ -53,8 +53,7 @@ const minNumber = (signs, number) => {
   return min;
 };
 
-//
-
+// *
 // 부등호를 만족하는 숫자의 조합을 차례대로 이어붙여 만든 정수를 "부등호 수" 라고 한다
 // 부등호 기호들을 입력받아 부등호를 만족하는 최대 부등호 수와 최소 부등호 수 차이를 리턴하라
 const inequalityNumber = function (signs) {
