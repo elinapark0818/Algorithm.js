@@ -16,6 +16,8 @@ function solution(n) {
   return answer;
 }
 
+// ! : 자연수에 문자열을 더하면 문자열이 된다!!
+
 function solution(n) {
-  return (n + "").split("").reduce((acc, cur) => acc + parseInt(cur), 0);
+  return (n + "").split("").reduce((acc, cur) => acc + Number(cur), 0);
 }
