@@ -4,6 +4,7 @@ function getCombination(arr, num) {
   if (num === 1) {
     return arr.map((value) => [value]);
   }
+
   let result = [];
 
   arr.forEach((value, index) => {

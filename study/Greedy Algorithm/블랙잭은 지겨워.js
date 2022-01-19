@@ -1,6 +1,5 @@
 function boringBlackjack(cards) {
   // TODO: 여기에 코드를 작성합니다.
-
   // 소수 구하기
   function isPrime(num) {
     for (let i = 2; i <= Math.sqrt(num); i++) {
@@ -11,7 +10,6 @@ function boringBlackjack(cards) {
     return true;
   }
 
-  //
   const blackjack = (cards) => {
     let count = 0;
 

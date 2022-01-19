@@ -1,8 +1,6 @@
-function rockPaperScissors(round) {
+// default parameter round=3
+function rockPaperScissors(round = 3) {
   // TODO: 여기에 코드를 작성합니다.
-  if (!round) {
-    round = 3;
-  }
   const RPS = ["rock", "paper", "scissors"];
 
   let result = new Array(3 ** round);
@@ -10,9 +8,11 @@ function rockPaperScissors(round) {
   for (let i = 0; i < result.length; i++) {
     result[i] = new Array();
   }
+
   for (let j = round - 1; j >= 0; j--) {
     let temp = RPS.length ** j;
     for (let i = 0; i < RPS.length ** round; i++) {
+      // % 3 하면 경우의 수가 0, 1, 2
       result[i].push(RPS[parseInt(i / temp) % 3]);
     }
   }
@@ -22,22 +22,23 @@ function rockPaperScissors(round) {
 // * 레퍼런스
 
 const rockPaperScissors = function (rounds) {
+  // * round가 있다면 라운드를 쓰고, 없다면 3을 써라
   rounds = rounds || 3;
-  const rps = ["rock", "paper", "scissors"];
-  const outcomes = [];
+  const RPS = ["rock", "paper", "scissors"];
+  const result = [];
 
-  let permutate = function (roundsToGo, playedSoFar) {
+  let permutation = function (roundsToGo, playedSoFar) {
     if (roundsToGo === 0) {
-      outcomes.push(playedSoFar);
+      result.push(playedSoFar);
       return;
     }
 
-    for (let i = 0; i < rps.length; i++) {
-      let currentPlay = rps[i];
-      permutate(roundsToGo - 1, playedSoFar.concat(currentPlay));
+    for (let i = 0; i < RPS.length; i++) {
+      let currentPlay = RPS[i];
+      permutation(roundsToGo - 1, playedSoFar.concat(currentPlay));
     }
   };
-  permutate(rounds, []);
+  permutation(rounds, []);
 
-  return outcomes;
+  return result;
 };
