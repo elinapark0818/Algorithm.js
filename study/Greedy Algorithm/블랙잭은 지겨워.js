@@ -1,6 +1,8 @@
 function boringBlackjack(cards) {
   // TODO: 여기에 코드를 작성합니다.
-  function p(num) {
+
+  // 소수 구하기
+  function isPrime(num) {
     for (let i = 2; i <= Math.sqrt(num); i++) {
       if (num % i === 0) {
         return false;
@@ -8,14 +10,23 @@ function boringBlackjack(cards) {
     }
     return true;
   }
-  function endGame(cards) {
+
+  //
+  const blackjack = (cards) => {
     let count = 0;
+
+    // 3장의 카드를 하나씩 확인 했을 때
     for (let i = 0; i < cards.length; i++)
       for (let j = i + 1; j < cards.length; j++)
         for (let k = j + 1; k < cards.length; k++)
-          if (p(cards[i] + cards[j] + cards[k])) count++;
+          // 소수 일 경우
+          if (isPrime(cards[i] + cards[j] + cards[k])) {
+            // 카운트 증가
+            count++;
+          }
+    // 카운트 리턴
     return count;
-  }
+  };
 
-  return endGame(cards);
+  return blackjack(cards);
 }
