@@ -9,7 +9,7 @@ function getCombination(arr, num) {
 
   arr.forEach((value, index) => {
     const rest = arr.slice(index + 1);
-    const combination = getCombination(rest, num -1);
+    const combination = getCombination(rest, num - 1);
     const attached = combination.map((c) => [value, ...c]);
     result.push(...attached);
   });
