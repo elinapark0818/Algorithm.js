@@ -38,6 +38,8 @@ function fibonacci(n) {
   if (n > 1) {
     // 피보나치 점화식 적용 F(n) = F(n-1) + F(n-2)
     // memo[2] = memo[1] + memo[0]
+    // memo[3] = memo[2] + memo[1]
+    // memo[4] = memo[3] + memo[2]
     memo[memo.length] = memo[memo.length - 1] + memo[memo.length - 2];
   }
   // 초기값에 있는 애들이라면 해당하는 인덱스의 피보나치 수 출력
@@ -45,7 +47,7 @@ function fibonacci(n) {
   return memo[n] !== undefined ? memo[n] : fibonacci(n);
 }
 
-// todo : 메모이제이션2 (메모에 추가해가면서 하기)
+// todo : 메모이제이션2
 const memo = [];
 
 function fibonacci(n) {
