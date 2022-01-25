@@ -4,3 +4,5 @@ function solution(n) {
   const x = Math.sqrt(n);
   return Number.isInteger(x) ? Math.pow(x + 1, 2) : -1;
 }
+
+// todo: Number.isInteger() = 정수인지 판별한다
