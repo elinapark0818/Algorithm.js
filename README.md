@@ -24,3 +24,7 @@
 좋은 방법은 아닌 것 같지만, -f 사용했다.
 
 git push -f
+
+## 글씨색 바뀌는지 확인하기
+
+<span style="color:yellow">노란색으로 바뀌어라!</span>
