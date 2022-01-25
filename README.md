@@ -27,4 +27,4 @@ git push -f
 
 ## 글씨색 바뀌는지 확인하기
 
-<span style="color:yellow">노란색으로 바뀌어라!</span>
+<font color=yellow>노란색으로 바뀌어라!</font>
