@@ -109,6 +109,43 @@ ALTER TABLE teams MODIFY id INT AUTO_INCREMENT;
 ALTER TABLE members MODIFY age TINYINT UNSIGNED;
 ALTER TABLE members MODIFY team_id TINYINT DEFAULT 0;
 
+-- * 후민이가 내준 과제
+ SELECT * FROM teams;
++----+------+
+| id | name |
++----+------+
+|  1 | A    |
+|  2 | B    |
++----+------+
+
+SELECT * FROM members;
++----+--------+------+---------+
+| id | name   | age  | team_id |
++----+--------+------+---------+
+|  1 | hoomin |   30 |       1 |
+|  2 | elina  |   17 |       1 |
+|  3 | yoonji |   24 |       1 |
+|  4 | ming   |   23 |       1 |
+|  5 | jelly  |   13 |       1 |
+|  6 | kein   |   30 |       2 |
+|  7 | venom  |   21 |       2 |
+|  8 | zico   |   27 |       2 |
+|  9 | cherry |   15 |       2 |
+| 10 | alley  |   25 |       2 |
+| 11 | peter  |   40 |       2 |
+| 12 | lisa   |   19 |       2 |
+| 13 | oop    |   16 |    NULL |
+| 14 | xoxo   |   22 |    NULL |
+| 15 | coco   |   33 |    NULL |
+| 16 | hoomin |   11 |    NULL |
+| 21 | lala   |    5 |       1 |
+| 22 | lulu   |    4 |       2 |
+| 23 | momo   |    7 |    NULL |
+| 24 | titi   |    6 |       2 |
+| 25 | hoomin |   33 |       2 |
++----+--------+------+---------+
+
+
 -- * COMPLETE
 -- todo: 이름이 hoomin 인 사람 조회하기
 SELECT * FROM members
