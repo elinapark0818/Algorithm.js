@@ -120,6 +120,12 @@ SELECT members.name, teams.name FROM members
 INNER JOIN teams 
 ON members.team_id=teams.id AND members.name='hoomin'
 
+-- ? 피드백 : WHERE 로 찾는게 좋다.
+SELECT members.name, teams.name FROM members
+INNER JOIN teams 
+ON members.team_id=teams.id 
+WHERE members.name='hoomin';
+
 -- * COMPLETE
 --  todo: 팀이 있는 사람만 조회
 SELECT members.name, teams.name FROM members
@@ -143,6 +149,11 @@ ORDER BY team_members DESC;
 -- 좀 더 깔끔하게
 SELECT team_id 팀ID, COUNT(*) 인원수 FROM members
 WHERE team_id IN (1, 2)
+GROUP BY team_id;
+
+-- ? 피드백 : IS NOT NULL 로 하는게 팀이 추가되었을때도 사용가능하니 이렇게 하자
+SELECT team_id 팀ID, COUNT(*) 인원수 FROM members
+WHERE team_id IS NOT NULL
 GROUP BY team_id;
 
 -- * SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY 
