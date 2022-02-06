@@ -23,18 +23,6 @@
 // ? computers[2]는 독립된 하나의 네트워크 이다.
 // ? 결과적으로 네트워크는 총 2개 이다.
 
-const DFS = (node, visited, computers) => {
-  // * 현재 노드를 방문처리
-  visited[node] = true;
-  for (let i = 0; i < computers.length; i++) {
-    // * 연결된 노드가 있고, 방문하지 않은 노드라면
-    if (computers[node][i] && !visited[i]) {
-      // * DFS 탐색 돌리기
-      DFS(i, visited, computers);
-    }
-  }
-};
-
 function solution(n, computers) {
   // * 네트워크의 개수를 담을 변수 answer
   let answer = 0;
@@ -53,14 +41,54 @@ function solution(n, computers) {
   return answer;
 }
 
-solution(3, [
-  [1, 1, 0],
-  [1, 1, 0],
-  [0, 0, 1],
-]);
+const DFS = (node, visited, computers) => {
+  // * 현재 노드를 방문처리
+  visited[node] = true;
+  for (let i = 0; i < computers.length; i++) {
+    // * 연결된 노드가 있고, 방문하지 않은 노드라면
+    if (computers[node][i] && !visited[i]) {
+      // * DFS 탐색 돌리기
+      DFS(i, visited, computers);
+    }
+  }
+};
 
-visited = [true, true];
-answer = 1;
+// * 가독성을 높히자
 
-visited = [true, true, true];
-answer = 2;
+function solution(n, computers) {
+  let answer = 0;
+  // * n의 길이를 가진 0으로 채운 배열을 만들자
+  let visited = Array(n).fill(0);
+  // * 방문할 애들을 담은 스택공간을 만들자
+  let stack = [];
+
+  // * n만큼 반복했을 때
+  for (let i = 0; i < n; i++) {
+    // * visited[i] === 0 이라면 (방문한 적이 없다면)
+    if (!visited[i]) {
+      // * 스택에 쌓고
+      stack.push(i);
+      // * 방문처리(1) 해준다
+      visited[i] = 1;
+
+      // * 스택에 쌓인 애들이 없어질때까지 반복문 처리
+      while (stack.length > 0) {
+        // * 현재 확인할 노드를 스택에서 꺼내서
+        let current = stack.shift();
+
+        for (let node in computers[current]) {
+          // * 1이면서 방문한적이 없다면
+          if (computers[current][node] && !visited[node]) {
+            // * 스택에 쌓고
+            stack.push(node);
+            // * 방문처리(1) 하기
+            visited[node] = 1;
+          }
+        }
+      }
+      // * 스택에 쌓였던 애들을 전부 확인하고 반복문을 통과했다면 중복없이 네트워크 개수가 된다
+      answer++;
+    }
+  }
+  return answer;
+}
