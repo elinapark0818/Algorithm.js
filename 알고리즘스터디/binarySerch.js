@@ -1,3 +1,6 @@
+// * Array.prototype.sort() 의 시간복잡도는 O(n log n)
+// * Binary Search 의 시간복잡도는 O(log n)
+
 const binarySearch = function (arr, target) {
   // TODO : 여기에 코드를 작성합니다.
   // 제일 왼쪽은 인덱스 0
