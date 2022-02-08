@@ -1,7 +1,7 @@
 const a = 1;
 const user = {
-  name: "John",
-  surname: "doe",
+  name: "Elina",
+  nickname: "우오아아아",
   age: 30,
 };
 
