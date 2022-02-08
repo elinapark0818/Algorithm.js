@@ -38,7 +38,7 @@ const LIS = function (arr) {
 
 // 레퍼런스
 
-// naive solution: O(2^N)
+// * naive solution: O(2^N)
 // 배열의 각 요소에 대해서 선택, 무시의 2가지 선택이 가능
 const LIS = function (arr) {
   // 현재 검토할 차례인 배열의 '인덱스'와
@@ -66,7 +66,7 @@ const LIS = function (arr) {
   return pickOrNot(0, Number.MAX_SAFE_INTEGER);
 };
 
-// dynamic programming with memoization: O(N^2)
+// * dynamic programming with memoization: O(N^2)
 const LIS = function (arr) {
   // memo[i]는 i부터 시작하는 LIS의 길이를 저장
   const memo = Array(arr.length).fill(-1);
@@ -94,7 +94,7 @@ const LIS = function (arr) {
   return Math.max(...memo);
 };
 
-// dynamic programming with tabulation: O(N^2)
+// * dynamic programming with tabulation: O(N^2)
 const LIS = function (arr) {
   const N = arr.length;
   // lis[i]는 i에서 끝나는 LIS의 길이를 저장
