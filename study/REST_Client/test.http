@@ -1,0 +1,11 @@
+@API_URL = http://localhost:5000/
+GET http://localhost:5000/users
+
+### 
+
+GET {{API_URL}}/users/2
+
+###
+
+POST http://localhost:5000/users
+Content-Type: application/json
