@@ -26,17 +26,17 @@ function isPrime(num) {
   return true;
 }
 
-// * Number + 배열화  (1033) => [1, 0, 3, 3]
+// * Number + 배열화  ("1033") => [1, 0, 3, 3]
 function splitNum(num) {
-  const digits = num.toString().split("");
-  return digits.map((d) => Number(d));
+  const digits = num.toString().split(""); // * ["1", "0", "3", "3"]
+  return digits.map((d) => Number(d)); /// * [1, 0, 3, 3]
 }
 
 // ? split 과 join은 따라가는거라고 기억해도 좋을듯!
 
 // * 문자열화
 // Number 타입으로 합치기(배열 -> Number)
-const joinDigits = (digits) => Number(digits.join(""));
+const joinDigits = (digits) => Number(digits.join("")); // * 1 0 3 3
 
 const primePassword = (curPwd, newPwd) => {
   // TODO: 여기에 코드를 작성합니다.
@@ -56,7 +56,7 @@ const primePassword = (curPwd, newPwd) => {
   // * 큐에 담을 거 구하기
   const enQueue = (queue, item) => {
     queue.push(item);
-    rear++;
+    rear++; // + 1
   };
   // * 큐에서 빼내기
   const deQueue = (queue) => {
@@ -70,7 +70,7 @@ const primePassword = (curPwd, newPwd) => {
   // * 각 4개의 숫자에 방문여부를 저장하는 배열
   // * 한 번 방문했다면, 다시 방문하지 않도록
   // ? 9999 이하의 자연수니까
-  const isVisited = Array(10000).fill(false);
+  const isVisited = Array(10000).fill(false); // * [false,false,false,false ...]
   // * 현재비밀번호를 방문한게 되니까 true 처리
   isVisited[curPwd] = true;
 
@@ -95,9 +95,9 @@ const primePassword = (curPwd, newPwd) => {
           const next = joinDigits(digits);
 
           // * 새 비밀번호랑 같다면 리턴시키기
-          // * 카운트를 1씩 증가()
+          // * 카운트를 1 증가해서 리턴
           if (next === newPwd) {
-            return count++;
+            return count + 1;
           }
           // * 1000보다 크면서 소수이어야 하고 방문한적이 없으면
           if (next > 1000 && isPrime(next) && isVisited[next] === false) {
