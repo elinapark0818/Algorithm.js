@@ -102,3 +102,48 @@ const inequalityNumber = function (signs) {
   const max = aux(-1, signs, [], digits.reverse(), Array(10).fill(false));
   return max - min;
 };
+
+// * OverFlowBIN
+// * 패턴을 찾아서 패턴 적용해서 찾기
+
+const getMaxNumber = (signs) => {
+  let num = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  let max = "";
+  for (let i = 0; i < signs.length; i++) {
+    if (signs[i] === ">") {
+      max += String(num.pop());
+    } else if (signs[i] === "<") {
+      let count = 1;
+      for (let j = i + 1; j < signs.length; j++) {
+        if (signs[j] === "<") count++;
+        else break;
+      }
+      max += String(num.splice(num.length - 1 - count, 1));
+    }
+  }
+  max += num.pop();
+  return max;
+};
+
+const getMinNumber = (signs) => {
+  let num = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  let min = "";
+  for (let i = 0; i < signs.length; i++) {
+    if (signs[i] === "<") {
+      min += String(num.shift());
+    } else if (signs[i] === ">") {
+      let count = 1;
+      for (let j = i + 1; j < signs.length; j++) {
+        if (signs[j] === ">") count++;
+        else break;
+      }
+      min += String(num.splice(count, 1));
+    }
+  }
+  min += num.shift();
+  return min;
+};
+
+function inequalityNumber(signs) {
+  return getMaxNumber(signs) - getMinNumber(signs);
+}
