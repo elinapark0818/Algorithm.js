@@ -100,3 +100,34 @@ const rangeMinimum = function (arr, ranges) {
   });
   return mins;
 };
+
+// *
+
+const rangeMinimum = function (arr, ranges) {
+  // TODO: 여기에 코드를 작성합니다.
+  // Number.MAX_SAFE_INTEGER = Number 객체의 정적 상수
+  // console.log(Number.MAX_SAFE_INTEGER) = 9007199254740991
+
+  // 돌려보자 rangeMinimum([1,3,2,7,9,11], [[1,4],[0,3]])
+
+  // ranges 의 각 배열들에 대해 최소값 구하기
+  return ranges.map((range) => {
+    // 구조분해 할당으로 start보다 크고 end 보다 작거나 같은 값 세팅
+    const [start, end] = range;
+    // 자바스크립트에서 최대 한도 이상을 넘어 값이 손실되는 것을 방지
+    // infinity 가 되는 것을 막기 위해서 한도 값 설정
+    let min = Number.MAX_SAFE_INTEGER; // 9007199254740991
+    // range 조건에 부합하는 반복문 작성
+    for (let i = start; i <= end; i++) {
+      // 안전하게 최소값 찾아서 min에 재할당
+      if (arr[i] < min) {
+        min = arr[i];
+      }
+    }
+    // arr = [1,3,2,7,9,11]
+    // 각 range 에 대한 최소값 리턴
+    // [1,4] => 2
+    // [0,3] => 1
+    return min; // [2, 1]
+  });
+};
