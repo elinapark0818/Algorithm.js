@@ -95,3 +95,5 @@ Microtask Queue > Animation Frames > Task Queue 순으로 실행된다. (크롬 
 다시 한번 깊이있게 검색해보았다!
 
 > 참조: https://velog.io/@thms200/
+
+"자바스크립트 엔진은 싱글 스레드이지만 독립적으로 실행되지 않고 자바스크립트의 런타임 환경(브라우저, Node)이 멀티스레드를 제공하기 때문에 동시성이 가능하다."
